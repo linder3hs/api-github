@@ -2,14 +2,23 @@
   "name": "github-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
-    "test": "npm start"
+    "start": "node api/index.js",
+    "test": "mocha --reporter spec"
   },
   "author": "Linder Hassinger",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vercel/node": "^1.8.5",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.1"
   }
 }

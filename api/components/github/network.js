@@ -5,9 +5,9 @@ const Controller = require("./controller");
 
 const router = express.Router();
 
-router.get("/history", history);
-router.get("/files/:sha", files);
-router.get("/comments/:sha", comments);
+router.get("/commits/history", history);
+router.get("/commit/files/:sha", files);
+router.get("/commit/comments/:sha", comments);
 
 async function history(req, res) {
   try {

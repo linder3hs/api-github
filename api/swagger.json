@@ -1,0 +1,134 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api for history of commits",
+    "version": "1.0.0",
+    "title": "History of commits"
+  },
+  "host": "github-api.linder3hs.vercel.app",
+  "basePath": "/api/github",
+  "tags": [
+    {
+      "name": "github",
+      "description": "Api for history of commits"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/commits/history": {
+      "get": {
+        "tags": [
+          "Commits"
+        ],
+        "summary": "History of commits",
+        "operationId": "historyCommits",
+        "responses": {
+          "default": {
+            "description": "List of history of commits"
+          }
+        }
+      }
+    },
+    "/commit/files/": {
+      "get": {
+        "tags": [
+          "Commits"
+        ],
+        "summary": "Files by commit id",
+        "operationId": "filesByCommit",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "sha",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Commit"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/commit/comments/": {
+      "get": {
+        "tags": [
+          "Commits"
+        ],
+        "summary": "Comments by commit id",
+        "operationId": "commentsByCommit",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "sha",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Commit"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Commit": {
+      "type": "object",
+      "properties": {
+        "sha": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object"
+        },
+        "error": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
